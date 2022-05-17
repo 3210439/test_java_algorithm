@@ -66,7 +66,8 @@ public class two_liquid {
     }
 
     public static void main(String[] args){
-
+        input();
+        pro();
     }
 
     static class FastReader{
