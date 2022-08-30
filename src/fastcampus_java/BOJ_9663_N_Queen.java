@@ -17,11 +17,14 @@ public class BOJ_9663_N_Queen {
 
     static void rec_func(int row) {
         if (row == N + 1) {
-            if (validity_check()) {
                 ans ++;
-            }
         }else {
             for (int c = 1; c <= N; c++) {
+                boolean possible = true;
+                // valid check (row, c)
+                for(int i=1; i<=row-1; i++){
+                    attackable(row, c, i, col[i]);
+                }
                 col[row] = c;
                 rec_func(row + 1);
                 col[row] = 0;
