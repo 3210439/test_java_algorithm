@@ -47,6 +47,7 @@ public class BOJ_2110_공유기설치 {
     private static boolean determination(int mid) {
         // todo: 가능한가 아닌가?
         int count = 1;
+        // 첫번째 자리는 놓았다고 가정
         long now = mid+a[1];
 
 
