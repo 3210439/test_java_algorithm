@@ -1,20 +1,23 @@
 package fastcampus_java;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
 
 public class BOJ_2667_단지번호_붙이기 {
 
-    // 결과 실패
+    // 결과 성공
     static int n;
     static int[][] arr;
     static boolean[][] visited;
-    static StringBuilder sb = new StringBuilder();
     static int[] dx = {0,1,0,-1};
     static int[] dy = {1,0,-1,0};
     static int nowIndex = 2;
     static int count = 0;
+    static List<Integer> list = new ArrayList<Integer>();
 
     static void input() {
         Scanner sc = new Scanner(System.in);
@@ -55,13 +58,16 @@ public class BOJ_2667_단지번호_붙이기 {
             for(int j=0; j<n; j++){
                 if(arr[i][j] == 1){
                     dfs(i,j,nowIndex++);
-                    sb.append(count).append("\n");
+                    list.add(count);
                     count = 0;
                 }
             }
         }
         System.out.println(nowIndex-2);
-        System.out.println(sb);
+        Collections.sort(list);
+        for(int v : list){
+            System.out.println(v);
+        }
     }
 
     public static void main(String[] args) {
