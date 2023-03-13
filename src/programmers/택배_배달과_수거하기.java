@@ -9,13 +9,20 @@ public class 택배_배달과_수거하기 {
 
     class Solution {
         static public long solution(int cap, int n, int[] deliveries, int[] pickups) {
+
             long answer = 0;
-            int deliveryTotal = Arrays.stream(deliveries).sum();
-            int pickupsTotal = Arrays.stream(pickups).sum();
+            int deliveryTotal = 0;
+            int pickupsTotal = 0;
+            for(int i=0; i<n; i++){
+                deliveryTotal += deliveries[i];
+                pickupsTotal += pickups[i];
+            }
+
             int truck = 0;
             int pickupBox = 0;
 
             while(deliveryTotal > 0 || pickupsTotal > 0){
+
                 truck = 0;
                 pickupBox = 0;
 
