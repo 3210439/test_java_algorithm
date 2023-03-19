@@ -1,11 +1,11 @@
-package programmers;
+package programmers.level1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static programmers.대충만든자판.Solution.solution;
+import static programmers.level1.대충만든자판.Solution.solution;
 
 public class 대충만든자판 {
 

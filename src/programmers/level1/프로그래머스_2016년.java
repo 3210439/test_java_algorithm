@@ -1,4 +1,4 @@
-package programmers;
+package programmers.level1;
 
 public class 프로그래머스_2016년 {
 
