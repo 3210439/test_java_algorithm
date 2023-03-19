@@ -1,4 +1,4 @@
-package programmers;
+package programmers.level1;
 
 public class 외계어_사전 {
 

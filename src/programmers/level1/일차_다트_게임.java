@@ -1,4 +1,4 @@
-package programmers;
+package programmers.level1;
 
 public class 일차_다트_게임 {
     // 미해결
