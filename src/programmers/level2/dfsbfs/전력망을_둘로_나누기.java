@@ -2,45 +2,43 @@ package programmers.level2.dfsbfs;
 
 public class 전력망을_둘로_나누기 {
 
-    static class Solution{
+    static class Solution {
+        public int solution(int n, int[][] wires) {
+            int minDifference = Integer.MAX_VALUE;
 
-        int[][] dArr = {{0,1}, {1,0}, {0,-1}, {-1,0}};
-        boolean[][] visited;
-        boolean[][] wireArr;
-        int max = 0;
+            for (int i = 0; i < wires.length; i++) {
+                boolean[] removed = new boolean[wires.length];
+                removed[i] = true;
 
-        int solution(int n, int[][] wires){
-            int answer = -1;
-            wireArr = new boolean[n+1][n+1];
-            visited = new boolean[n+1][n+1];
+                int count1 = dfs(1, wires, removed);
+                int count2 = n - count1;
 
-            for(int i=0; i<n; i++){
-                visited[0][i] = true;
-                visited[i][0] = true;
+                int difference = Math.abs(count1 - count2);
+                minDifference = Math.min(minDifference, difference);
             }
 
-            for(int i=0; i<n; i++){
-                int left = wires[i][0];
-                int right = wires[i][1];
-                wireArr[left][right] = true;
-            }
+            return minDifference;
+        }
 
-            for(int i=1; i<=n; i++){
-                for(int j=1; j<=n; j++){
+        private int dfs(int node, int[][] wires, boolean[] removed) {
+            int count = 1;
 
+            for (int i = 0; i < wires.length; i++) {
+                if (!removed[i] && (wires[i][0] == node || wires[i][1] == node)) {
+                    removed[i] = true;
+                    int nextNode = (wires[i][0] == node) ? wires[i][1] : wires[i][0];
+                    count += dfs(nextNode, wires, removed);
                 }
             }
 
-            return answer;
+            return count;
         }
+    }
 
-        void dfs(int x, int y, int count){
-            if(visited[x][y] == false && wireArr[x][y]){
-                visited[x][y] = true;
-                for(int i=0; i<dArr.length; i++){
-                    dfs(dArr[i][0], dArr[i][1], count+1);
-                }
-            }
-        }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int solution1 = solution.solution(4, new int[][]{{1, 2}, {2, 3}, {3, 4}});
+        System.out.println(solution1);
     }
 }
